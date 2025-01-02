@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Expense {
   String description;
   double amount;
@@ -27,6 +29,24 @@ class ExpenseTracker {
     for (int i = 0; i < expenses.length; i++) {
       print('${i + 1}. ${expenses[i]}');
     }
+  }
+
+  void editExpenses(int index, String newDescription, double newAmount) {
+    if (index < 0 || index >= expenses.length) {
+      print('No expenses to display.');
+      return;
+    }
+    expenses[index].description = newDescription;
+    expenses[index].amount = newAmount;
+    print("Expense updated successfully");
+  }
+
+  void deleteExpense(int index) {
+    if (index < 0) {
+      print("No Expenses to Delete");
+      return;
+    }
+    expenses.removeAt(index);
   }
 
   double calculateTotalExpense() {
